@@ -2,6 +2,10 @@ var fs = require('fs');
 var path = require('path');
 var child_process = require('child_process');
 
+function run_pod_install(context){
+
+}
+
 module.exports = function(context) {
 
     const projectRoot = context.opts.projectRoot;
@@ -30,20 +34,21 @@ module.exports = function(context) {
             }
 
             const updatedData = dataArray.join('\n');
+
+            console.log("🚨 Podfile: " + updatedData);
             fs.writeFile(podfilePath, updatedData, (err) => {
                 if (err) throw err;
                 console.log ('⭐️ Podfile Successfully updated ⭐️');
+
+                //Run "pod install"
+                var pathiOS = path.join(context.opts.projectRoot,"platforms","ios");
+                var child = child_process.execSync('pod install', {cwd:pathiOS});
+                console.log("⭐️ Pod Install: Process finished ⭐️");
+                if(child.error) {
+                    console.log("🚨 ERROR: ",child.error);
+                }
             });
 
-            await new Promise(r => setTimeout(r, 2000));
-            
-            //Run "pod install"
-            var pathiOS = path.join(context.opts.projectRoot,"platforms","ios");
-            var child = child_process.execSync('pod install', {cwd:pathiOS});
-            console.log("⭐️ Pod Install: Process finished ⭐️");
-            if(child.error) {
-                console.log("🚨 ERROR: ",child.error);
-            }
         });
 }
 
