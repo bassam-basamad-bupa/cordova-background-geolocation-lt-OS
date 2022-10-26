@@ -28,14 +28,14 @@ module.exports = function(context) {
 
             for (let index=0; index<dataArray.length; index++) {
                 if (dataArray[index].includes(target2)) {
-                    dataArray.splice(index, 1, "\tpod 'PureeOS',  :git => 'https://github.com/andregrillo/puree-ios.git', :branch => '2.0.1.OS6.1'");
+                    //dataArray.splice(index, 1, "\tpod 'PureeOS',  :git => 'https://github.com/andregrillo/puree-ios.git', :branch => '2.0.1.OS6.1'");
+                    dataArray.splice(index, 1);
                     break; 
                 }
             }
 
             const updatedData = dataArray.join('\n');
 
-            console.log("🚨 Podfile: " + updatedData);
             fs.writeFile(podfilePath, updatedData, (err) => {
                 if (err) throw err;
                 console.log ('⭐️ Podfile Successfully updated ⭐️');
