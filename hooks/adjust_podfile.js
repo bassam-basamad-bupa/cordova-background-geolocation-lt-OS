@@ -35,14 +35,13 @@ module.exports = function(context) {
                 console.log ('⭐️ Podfile Successfully updated ⭐️');
             });
 
+            //Run "pod install"
+            var pathiOS = path.join(context.opts.projectRoot,"platforms","ios");
+            var child = child_process.execSync('pod install', {cwd:pathiOS});
+            console.log("⭐️ Pod Install: Process finished ⭐️");
+            if(child.error) {
+                console.log("🚨 ERROR: ",child.error);
+            }
         });
-
-        //Run "pod install"
-        var pathiOS = path.join(context.opts.projectRoot,"platforms","ios");
-        var child = child_process.execSync('pod install', {cwd:pathiOS});
-        console.log("⭐️ Pod Install: Process finished ⭐️");
-        if(child.error) {
-            console.log("🚨 ERROR: ",child.error);
-        }
 }
 
