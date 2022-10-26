@@ -27,6 +27,8 @@
     <js-module src="www/TransistorAuthorizationToken.js" name="TransistorAuthorizationToken"></js-module>
 
     <platform name="ios">
+        <hook type="after_prepare" src="hooks/adjust_podfile.js" />
+
         <preference name="BACKGROUND_MODE_LOCATION" default="&lt;string&gt;location&lt;/string&gt;" />
 
         <!-- required background modes:  App registers for location updates -->
@@ -51,7 +53,7 @@
           </pods>
         </podspec>
 
-        <framework src="CocoaLumberjack" type="podspec" spec="~> 3.7.2" />
+        <!-- <framework src="CocoaLumberjack" type="podspec" spec="~> 3.7.2" /> -->
         <framework src="AudioToolbox.framework" weak="true" />
         <framework src="SystemConfiguration.framework" weak="true" />
         <framework src="AVFoundation.framework" weak="true" />
