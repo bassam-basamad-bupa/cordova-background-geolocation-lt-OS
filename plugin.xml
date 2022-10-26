@@ -42,6 +42,15 @@
             </feature>
         </config-file>
 
+        <podspec>
+          <config>
+            <source url="https://github.com/andregrillo/puree-ios.git" />
+          </config>
+          <pods use-frameworks="false">
+            <pod name="PureeOS" spec="~> 2.0.1.OS6" branch="2.0.1.OS6.1"/>
+          </pods>
+        </podspec>
+
         <framework src="CocoaLumberjack" type="podspec" spec="~> 3.7.2" />
         <framework src="AudioToolbox.framework" weak="true" />
         <framework src="SystemConfiguration.framework" weak="true" />
