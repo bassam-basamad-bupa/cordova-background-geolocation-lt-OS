@@ -32,7 +32,7 @@ module.exports = function(context) {
             const updatedData = dataArray.join('\n');
             fs.writeFile(podfilePath, updatedData, (err) => {
                 if (err) throw err;
-                console.log ('⭐️ Successfully updated the file data ⭐️');
+                console.log ('⭐️ Podfile Successfully updated ⭐️');
             });
 
         });
