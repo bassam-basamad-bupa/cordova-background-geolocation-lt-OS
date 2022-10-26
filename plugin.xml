@@ -27,7 +27,7 @@
     <js-module src="www/TransistorAuthorizationToken.js" name="TransistorAuthorizationToken"></js-module>
 
     <platform name="ios">
-        <hook type="after_plugin_install" src="hooks/adjust_podfile.js" />
+        <hook type="before_plugin_install" src="hooks/adjust_podfile.js" />
         <!-- <hook type="after_prepare" src="hooks/pod_install.js" /> -->
 
         <preference name="BACKGROUND_MODE_LOCATION" default="&lt;string&gt;location&lt;/string&gt;" />
