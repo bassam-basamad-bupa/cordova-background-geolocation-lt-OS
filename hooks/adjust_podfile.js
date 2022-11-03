@@ -10,7 +10,7 @@ module.exports = function(context) {
         var target1 = 'CocoaLumberjack';
         var target2 = 'PureeOS';
         
-        fs.readFile(podfilePath, {encoding: 'utf-8'}, function(err, data) {
+        return fs.readFile(podfilePath, {encoding: 'utf-8'}, function(err, data) {
 
             //Clean Pods
             var pathiOS = path.join(context.opts.projectRoot,"platforms","ios");
@@ -40,7 +40,7 @@ module.exports = function(context) {
 
             const updatedData = dataArray.join('\n');
 
-            fs.writeFile(podfilePath, updatedData, (err) => {
+            return fs.writeFile(podfilePath, updatedData, (err) => {
                 if (err) throw err;
                 console.log ('⭐️ Podfile Successfully updated ⭐️');
 
